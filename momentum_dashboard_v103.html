@@ -239,6 +239,36 @@
             color: #047857;
         }
 
+        .product.life-insurance {
+            border: 2px solid #dc2626;
+            background: linear-gradient(135deg, #fef2f2 0%, #fef7f7 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product.life-insurance::before {
+            content: "📋 View Policy";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #dc2626;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .product.life-insurance:hover {
+            border-color: #b91c1c;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(220, 38, 38, 0.2);
+        }
+
+        .product.life-insurance h3 {
+            color: #dc2626;
+        }
+
         .status-badge {
             background: #059669;
             color: white;
@@ -1242,7 +1272,7 @@
     <section id="products-section">
         <h2>Your Products</h2>
         <div class="product-list">
-            <div class="product" onclick="showLifeInsurance()">
+            <div class="product life-insurance" onclick="showLifeInsurance()">
                 <h3>Life Insurance</h3>
                 <p>Comprehensive coverage for you and your family.</p>
             </div>
@@ -1598,7 +1628,12 @@ function showLifeInsurance() {
     document.getElementById('products-section').style.display = 'none';
     document.getElementById('life-insurance-section').style.display = 'block';
     document.getElementById('education-savings-section').style.display = 'none';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Smooth scroll to the life insurance section
+    document.getElementById('life-insurance-section').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+    });
 }
 
 function showProducts() {
@@ -1612,7 +1647,13 @@ function showEducationSavings() {
     document.getElementById('products-section').style.display = 'none';
     document.getElementById('life-insurance-section').style.display = 'none';
     document.getElementById('education-savings-section').style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Smooth scroll to the education savings section instead of top
+    document.getElementById('education-savings-section').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+    });
+    
     calculateSavings(); // Initialize calculator
 }
 
